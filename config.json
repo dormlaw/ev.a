@@ -1,0 +1,11 @@
+{
+  "weather_key" : "your openweathermap API key",
+
+  "users": {
+    "test" : {
+      "webhook_url" : "webhook url of disired chanel",
+      "city_name" : "City name",
+      "city_id" : "openweathermap city ID"
+    }
+  }
+}
