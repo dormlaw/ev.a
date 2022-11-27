@@ -80,17 +80,19 @@ async function weatherRequest(id) {
         if (date === today) {
             //openweathermap дает время в UTC с интервалом в 3 часа
             // '6' соответсвует 9 часам утра по МСК и т.д.
-            if(time == '6') { 
-                morning_temp = temp
-                morning_weather = weather
-            }
-            if(time == '9') { 
-                day_temp = temp
-                day_weather = weather
-            }
-            if(time == '15') { 
-                evening_temp = temp
-                evening_weather = weather
+            switch (time) {
+                case 6:
+                    morning_temp = temp
+                    morning_weather = weather
+                break
+                case 9:
+                    day_temp = temp
+                    day_weather = weather
+                break
+                case 15:
+                    evening_temp = temp
+                    evening_weather = weather
+                break
             }
         }
     })
@@ -107,7 +109,7 @@ async function weatherRequest(id) {
 async function exchangeRate() {
     const url = 'http://www.cbr.ru/scripts/XML_daily.asp'
     const response = await fetch(url);
-        if (response) {console.log('exchange rate has bben successfully recieved')}
+        if (response) {console.log('exchange rate has been successfully recieved')}
     const result = await response.text();
     const data = convert.xml2js(result, { compact: true, spaces: 2 });
 
